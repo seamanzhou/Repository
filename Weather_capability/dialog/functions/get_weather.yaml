@@ -1,0 +1,32 @@
+parameters:
+  - name: weather_city
+action_groups:
+  - condition: weather_city != null
+    actions:
+      - type: api-request
+        method: GET
+        system_alias: WeatherService
+        path: /wx/forecast/daily/3day?placeid=<? weather_city.placeid ?>&units=m&language=en-US&format=json&apiKey=<api key>
+        result_variable: weather_result
+  - condition: weather_city == null
+    actions:      
+      - type: odata-batch
+        system_alias: WeatherService
+        path: /wx/forecast/daily/3day?placeid=Shanghai&units=m&language=en-US&format=json&apiKey=<api key>
+        headers: <header key> <header value>
+        requests:
+          - method: GET
+            path: <relative_url_path>
+            body: <body value>
+            result_key: result_key_name
+        result_variable: weather_result
+result:
+  success: <? weather_result.status_code == 200 ?>
+  city: <? weather_city.city ?>
+  minTemp: <? weather_result.body.calendarDayTemperatureMin[0] ?>
+  maxTemp: <? weather_result.body.calendarDayTemperatureMax[0] ?>
+  dayOfWeek: <? weather_result.body.dayOfWeek[0] ?>
+  narrative: <? weather_result.body.narrative[0] ?>
+
+  finally:
+  behavior: skip

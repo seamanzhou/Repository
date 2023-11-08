@@ -1,0 +1,15 @@
+# description: this is the place for some description
+description: check weather
+examples:
+  - What will the weather be like next week?
+  - How is the weather
+  - How is the weather going to be next month
+  - How is the weather in [Walldorf](city)?
+  - "How is the weather in [Walldorf](city), [Germany](country)?"
+  - How will be the weather next week?
+  - weather forecast
+  - What is outside like today?
+  - What is the temperature in [Walldorf](city)?
+  - "What is the temperature in [Walldorf](city), [Germany](country)?"
+  - What is the temperature in [New York](city)?
+  - "What is the temperature in [New York](city), [US](country)?"

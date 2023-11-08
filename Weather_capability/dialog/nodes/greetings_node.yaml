@@ -1,0 +1,9 @@
+type: node
+title: greeting
+condition: '#greeting_intent'
+response:
+  messages:
+   - type: text
+     content: "Hello! Welcome to DAS!"
+finally:
+  behavior: wait

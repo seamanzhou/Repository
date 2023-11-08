@@ -1,0 +1,5 @@
+schema_version: 1.1.0
+name: Weather_capability
+capabilities:
+  - type: local
+    folder: ./Weather_capability

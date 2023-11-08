@@ -1,0 +1,12 @@
+schema_version: 1.1.0
+
+metadata:
+  namespace: namespace
+  name: Weather_capability
+  version: 1.1.0
+  display_name: Weather_capability
+  description: Test Weather capability
+
+system_aliases:
+  SystemAliasName:
+    destination: S4Destination

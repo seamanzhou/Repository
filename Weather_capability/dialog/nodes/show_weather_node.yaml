@@ -1,0 +1,59 @@
+type: node
+title: Show Weather node
+
+condition: '#weatherintent'
+trigger_utterance: Please show me the weather for today.
+
+slot_filling:
+  prompt_for_everything: "Looking for a city"
+  handlers:
+    - condition: "$city"
+      prompts:
+       - type: text
+         content: "The city is not present. Maybe you have misspelled it?"
+         markdown: false
+      post_slot_action: prompt-again
+  slots:
+    - check_for: "@city"
+      save_as:
+        variable: "weather_city"
+        value: {"city": "@city"}
+      not_present:
+        prompts:
+          - type: text
+            content: "For which city would you like to see the weather?"
+      on_response:
+          found:
+            - condition: input.text.length() > 1
+              dialog_functions:
+              - name: get_weather
+                parameters:
+                  - name: weather_city
+                    value: "<? $weather_city ?>"
+                  - name: api_key
+                    value: "api for location"
+                result_variable: weather_city
+              post_slot_action: move-on
+          not_found:
+            - condition: input.text.length() > 1
+              prompts:
+                - type: text
+                  content: "No city was found"
+                  markdown: false
+              post_slot_action: prompt-again
+
+conditional_responses:
+ 
+  - condition: <$weather_city>
+    dialog_functions:
+    - name: get_weather
+      result_variable: weather_result
+      parameters:
+        - name: weather_city
+          value: "<? $weather_city ?>"
+    messages:
+      - type: text
+        content: Please find weather in <? $weather_city ?> <? $weather_result ?>.
+        markdown: false
+finally:
+  behavior: skip

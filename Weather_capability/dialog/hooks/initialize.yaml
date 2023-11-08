@@ -1,0 +1,12 @@
+parameters:
+  - name: user
+action_groups:
+- condition: "true"
+  actions:
+    - type: set-variables
+      scripting_type: spel
+      variables:
+        - name: userEmail
+          value: <? user.email ?>
+result:
+  email : <? userEmail ?>

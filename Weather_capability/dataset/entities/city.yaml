@@ -1,0 +1,20 @@
+fuzzy_matching: true
+#values: [] #optional. an entity can exist without any values upfront (contextual/annotations use case)
+
+values:
+  - value: Walldorf
+  - value: Wiesloch
+  - value: Bangalore
+  - value: Palo Alto
+  - value: Paris
+  - value: Delhi
+  - value: Tokyo
+  - value: Shanghai
+  - value: São Paulo
+  - value: Osaka
+  - value: New York
+    synonyms:
+    - New York City
+    - NY
+  - value: Mumbai
+  - value: Dhaka

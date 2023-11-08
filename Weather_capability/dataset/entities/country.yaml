@@ -1,0 +1,15 @@
+fuzzy_matching: true
+#values: [] #optional. an entity can exist without any values upfront (contextual/annotations use case)
+
+values:
+  - value: Franch
+  - value: Germany
+  - value: China
+  - value: Korea
+  - value: Japan
+  - value: United State
+    synonyms:
+    - US
+  - value: United Kindom
+    synonyms:
+    - UK
